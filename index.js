@@ -8,6 +8,7 @@ while (i<numberOfDrums){
 
         var buttonHtml = this.innerHTML;
         makeSound(buttonHtml);
+        buttonAnimation(buttonHtml);
     });
 
     i++;
@@ -16,6 +17,7 @@ while (i<numberOfDrums){
 //key board press
 document.addEventListener("keypress",function(event){
     makeSound(event.key);
+    buttonAnimation(event.key);
 });
 
 // function to make sound
@@ -66,4 +68,13 @@ function makeSound(buttonHtml){
             console.log(buttonHtml)
             break;
     }
+}
+
+function buttonAnimation(key){
+    var activeButton = document.querySelector("." + key);
+    activeButton.classList.add("pressed");
+    
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 100);
 }
